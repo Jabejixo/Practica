@@ -1,0 +1,57 @@
+﻿<Page x:Class="PractosNumber1.PageForCreateReview"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PractosNumber1"
+      mc:Ignorable="d" 
+      d:DesignHeight="686" d:DesignWidth="275"
+      Title="PageForCreateReview">
+    <Page.Resources>
+        <local:MyMultiConverter x:Key="MyMultiConverter"/>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" FontFamily="Impact" Foreground="AliceBlue" FontSize="20" TextAlignment="Center" TextWrapping="Wrap" Margin="0,15,0,0" Text="Игрушки"></TextBlock>
+        <TextBlock Grid.Row="2" FontFamily="Impact" Foreground="AliceBlue" FontSize="20" TextAlignment="Center" TextWrapping="Wrap" Margin="0,15,0,0" Text="Имя"></TextBlock>
+        <TextBlock Grid.Row="4" FontFamily="Impact" Foreground="AliceBlue" FontSize="20" TextAlignment="Center" TextWrapping="Wrap" Margin="0,15,0,0" Text="Рейтинг"></TextBlock>
+        <TextBlock Grid.Row="6" FontFamily="Impact" Foreground="AliceBlue" FontSize="20" TextAlignment="Center" TextWrapping="Wrap" Margin="0,15,0,0" Text="Отзыв"></TextBlock>
+        <ComboBox Grid.Row="1" FontFamily="Impact" Foreground="AliceBlue" FontSize="20"  Background="DimGray" x:Name="Toy_ComboBox" SelectionChanged="Toy_ComboBox_SelectionChanged"></ComboBox>
+        <TextBox Grid.Row="3" FontFamily="Impact" Foreground="AliceBlue" FontSize="20" TextAlignment="Center" TextWrapping="Wrap" Background="DimGray" x:Name="UserName_TextBox"></TextBox>
+        <TextBox Grid.Row="5" FontFamily="Impact" Foreground="AliceBlue" FontSize="20" TextAlignment="Center" TextWrapping="Wrap" Background="DimGray" x:Name="Rating_TextBox" PreviewTextInput="TextBox_PreviewTextInput"></TextBox>
+        <TextBox Grid.Row="7" FontFamily="Impact" Foreground="AliceBlue" FontSize="20" TextAlignment="Center" TextWrapping="Wrap" Background="DimGray" x:Name="Review_TextBox"></TextBox>
+        <Button Grid.Row="8" Background="DimGray" Content="Изменить" FontFamily="Impact" Foreground="AliceBlue" FontSize="20" x:Name="UpdateBTN" Width="265" Click="UpdateBTN_Click" >
+            <Button.IsEnabled>
+                <MultiBinding Converter="{StaticResource MyMultiConverter}">
+                    <Binding ElementName="Toy_ComboBox" Path="Text"/>
+                    <Binding ElementName="UserName_TextBox" Path="Text"/>
+                    <Binding ElementName="Rating_TextBox" Path="Text"/>
+                    <Binding ElementName="Review_TextBox" Path="Text"/>
+                </MultiBinding>
+            </Button.IsEnabled>
+        </Button>
+        <Button Grid.Row="9" Background="DimGray" Content="Создать" FontFamily="Impact" Foreground="AliceBlue" FontSize="20" x:Name="CreateBTN" Click="CreateBTN_Click" Width="265">
+            <Button.IsEnabled>
+                <MultiBinding Converter="{StaticResource MyMultiConverter}">
+                    <Binding ElementName="Toy_ComboBox" Path="Text"/>
+                    <Binding ElementName="UserName_TextBox" Path="Text"/>
+                    <Binding ElementName="Rating_TextBox" Path="Text"/>
+                    <Binding ElementName="Review_TextBox" Path="Text"/>
+                </MultiBinding>
+            </Button.IsEnabled>
+        </Button>
+        <Button Grid.Row="10" Background="DimGray" Content="Выйти" FontFamily="Impact" Foreground="AliceBlue" FontSize="20" x:Name="Exit" Click="Exit_Click" Width="265" ></Button>
+    </Grid>
+</Page>
